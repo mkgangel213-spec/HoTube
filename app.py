@@ -91,15 +91,12 @@ def download():
     # yt-dlp seçenekleri
    # İndirme ayarları
         # yt-dlp seçenekleri
-# İndirme ayarları
-ydl_opts = {
-    'format': 'bestaudio/best' if format_type == 'mp3' else 'bestvideo+bestaudio/best',
-    'outtmpl': 'downloads/%(title)s.%(ext)s',
-    'cookiefile': 'cookies.txt',
-    'postprocessors': [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3'}] if format_type == 'mp3' else []
-}
-
-# Formata göre yt-dlp ayarlarını özelleştirme
+    ydl_opts = {
+        'format': 'bestaudio/best' if format_type == 'mp3' else 'bestvideo+bestaudio/best',
+        'outtmpl': 'downloads/%(title)s.%(ext)s',
+        'cookiefile': 'cookies.txt',
+        'postprocessors': [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3'}] if format_type == 'mp3' else []
+    }
 
     # Formata göre yt-dlp ayarlarını özelleştirme
     if format_pref == 'mp3':
