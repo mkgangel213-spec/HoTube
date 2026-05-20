@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoTube - Modern Video ve Ses İndirici</title>
+    <meta name="description" content="HoTube ile YouTube videolarını yüksek kalitede MP4, MP3 veya AVI formatında hızlı ve ücretsiz bir şekilde indirin.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS dosyası -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Arka plan glow efektleri -->
+    <div class="glow-bg">
+        <div class="glow-circle glow-1" id="glow-1"></div>
+        <div class="glow-circle glow-2" id="glow-2"></div>
+    </div>
+
+    <main class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area" id="logo-area">
+                <span class="logo-icon">🔥</span>
+                <h1 class="logo-text">Ho<span class="logo-highlight">Tube</span></h1>
+            </div>
+            <p class="subtitle">YouTube videolarını MP4, MP3 veya AVI formatında yüksek hızla dönüştürün ve indirin.</p>
+        </header>
+
+        <!-- Main Card (Glassmorphism) -->
+        <section class="glass-card" id="downloader-card">
+            <!-- Form -->
+            <form id="download-form" class="download-form">
+                <!-- URL Input Alanı -->
+                <div class="input-group">
+                    <label for="url-input" class="input-label" id="url-label">YouTube Video Bağlantısı</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔗</span>
+                        <input 
+                            type="url" 
+                            id="url-input" 
+                            name="url" 
+                            placeholder="https://www.youtube.com/watch?v=..." 
+                            required 
+                            autocomplete="off"
+                        >
+                    </div>
+                </div>
+
+                <!-- Format Seçim Alanı -->
+                <div class="format-group" id="format-selection-group">
+                    <span class="group-label">İndirme Formatı</span>
+                    <div class="format-options">
+                        <label class="format-option-card" id="format-card-mp4">
+                            <input type="radio" name="format" value="mp4" checked>
+                            <div class="format-content">
+                                <span class="format-icon">📹</span>
+                                <span class="format-name">MP4 Video</span>
+                                <span class="format-desc">En yüksek video kalitesi</span>
+                            </div>
+                        </label>
+
+                        <label class="format-option-card" id="format-card-mp3">
+                            <input type="radio" name="format" value="mp3">
+                            <div class="format-content">
+                                <span class="format-icon">🎵</span>
+                                <span class="format-name">MP3 Ses</span>
+                                <span class="format-desc">Müzik ve podcastler için</span>
+                            </div>
+                        </label>
+
+                        <label class="format-option-card" id="format-card-avi">
+                            <input type="radio" name="format" value="avi">
+                            <div class="format-content">
+                                <span class="format-icon">🎞️</span>
+                                <span class="format-name">AVI Video</span>
+                                <span class="format-desc">Geniş cihaz uyumluluğu</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Gönder Butonu -->
+                <button type="submit" id="download-btn" class="download-btn">
+                    <span class="btn-text" id="btn-text-content">Dönüştür ve İndir</span>
+                    <span class="btn-icon">⚡</span>
+                </button>
+            </form>
+
+            <!-- Yükleniyor (Loading) Durumu -->
+            <div id="loading-state" class="loading-state hidden">
+                <div class="loader-wrapper">
+                    <div class="main-spinner"></div>
+                    <div class="pulse-ring"></div>
+                </div>
+                <h3 class="loading-title">Videnuz Hazırlanıyor...</h3>
+                <p class="loading-subtitle">YouTube'dan veriler çekiliyor ve dönüştürülüyor. Bu işlem videonun uzunluğuna göre birkaç dakika sürebilir.</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <!-- Sonuç ve Hata Bildirim Kutusu -->
+            <div id="message-box" class="message-box hidden">
+                <div class="message-content">
+                    <span id="message-icon" class="message-icon">⚠️</span>
+                    <p id="message-text" class="message-text"></p>
+                </div>
+                <button type="button" id="close-msg-btn" class="close-msg-btn" aria-label="Kapat">&times;</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 HoTube. Tüm hakları saklıdır. Kişisel kullanım amacıyla tasarlanmıştır.</p>
+            <div class="footer-links">
+                <a href="#" id="link-terms">Kullanım Koşulları</a>
+                <a href="#" id="link-privacy">Gizlilik Politikası</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JS Kodları -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
